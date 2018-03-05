@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,6 +118,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="amessage.pb-c.h" />
+    <ClInclude Include="AMessageDeserialize.h" />
+    <ClInclude Include="AMessageSerialize.h" />
+    <ClInclude Include="protobuf-c.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="amessage.pb-c.c" />
+    <ClCompile Include="AMessageDeserialize.c" />
+    <ClCompile Include="AMessageSerialize.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="protobuf-c.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
