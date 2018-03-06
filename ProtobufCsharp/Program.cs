@@ -22,15 +22,10 @@ namespace ProtobufCsharp
             };
 
             // 文字列にシリアライズ
-            string data;
-            using (var stream = new MemoryStream())
-            {
-                person.WriteTo(stream);
-                data = Encoding.UTF8.GetString(stream.ToArray());
-            }
+            var data = Serialize(person);
 
             // シリアライズした文字列を読み込んでデシリアライズする
-            Person someone = Person.Parser.ParseFrom(new MemoryStream(Encoding.UTF8.GetBytes(data)));
+            Person someone = Deserialize<Person>(data);
 
             // 動作確認
             Console.WriteLine($"Id:{someone.Id}, Name:{someone.Name}, Email:{someone.Email}, " +
@@ -38,6 +33,21 @@ namespace ProtobufCsharp
                 $"Phones[1](Number:{someone.Phones[1].Number}, Type:{someone.Phones[1].Type})");
 
             Console.ReadKey();
+        }
+
+        static string Serialize<T>(T obj) where T : IMessage<T>
+        {
+            using (var stream = new MemoryStream())
+            {
+                obj.WriteTo(stream);
+                return Encoding.UTF8.GetString(stream.ToArray());
+            }
+        }
+
+        static T Deserialize<T>(string data) where T : IMessage<T>, new()
+        {
+            var parser = new MessageParser<T>(() => new T());
+            return parser.ParseFrom(new MemoryStream(Encoding.UTF8.GetBytes(data)));
         }
     }
 }
