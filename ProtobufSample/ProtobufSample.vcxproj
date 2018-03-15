@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -97,6 +98,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -118,17 +120,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="amessage.pb-c.h" />
-    <ClInclude Include="AMessageDeserialize.h" />
-    <ClInclude Include="AMessageSerialize.h" />
-    <ClInclude Include="protobuf-c.h" />
+    <ClInclude Include="FileCtrl.h" />
+    <ClInclude Include="protobuf-c\protobuf-c.h" />
+    <ClInclude Include="repeated.pb-c.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="amessage.pb-c.c" />
-    <ClCompile Include="AMessageDeserialize.c" />
-    <ClCompile Include="AMessageSerialize.c" />
+    <ClCompile Include="FileCtrl.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="protobuf-c.c" />
+    <ClCompile Include="protobuf-c\protobuf-c.c" />
+    <ClCompile Include="repeated.pb-c.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="repeated.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
