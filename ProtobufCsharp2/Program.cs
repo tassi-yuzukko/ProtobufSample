@@ -16,7 +16,11 @@ namespace ProtobufCsharp2
             st st = Deserialize<st>(ReadFile(FileName));
 
             Console.WriteLine("Read Success !!");
-            Console.WriteLine($"A:{st.A}, B:{st.B}, Child.X:{st.Child.X}, Child.Y:{st.Child.Y}");
+            Console.WriteLine($"A:{st.A}, B:{st.B}, C:{st.C}, D:{st.D}, Child.X:{st.Child.X}, Child.Y:{st.Child.Y}");
+            foreach (var item in st.Dict)
+            {
+                Console.WriteLine($"key:{item.Key}, value:{item.Value}");
+            }
             Console.ReadLine();
         }
 

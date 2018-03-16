@@ -4,7 +4,7 @@
 #ifndef PROTOBUF_C_st_2eproto__INCLUDED
 #define PROTOBUF_C_st_2eproto__INCLUDED
 
-#include "protobuf-c/protobuf-c.h"
+#include <protobuf-c/protobuf-c.h>
 
 PROTOBUF_C__BEGIN_DECLS
 
@@ -15,8 +15,9 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 
-	typedef struct _St St;
+typedef struct _St St;
 typedef struct _St__T St__T;
+typedef struct _St__DictEntry St__DictEntry;
 
 
 /* --- enums --- */
@@ -26,57 +27,80 @@ typedef struct _St__T St__T;
 
 struct  _St__T
 {
-	ProtobufCMessage base;
-	int32_t x;
-	int32_t y;
+  ProtobufCMessage base;
+  int32_t x;
+  int32_t y;
+  int32_t z;
 };
 #define ST__T__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&st__t__descriptor) \
-    , 0, 0 }
+    , 0, 0, 0 }
+
+
+struct  _St__DictEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  int32_t value;
+};
+#define ST__DICT_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&st__dict_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, 0 }
 
 
 struct  _St
 {
-	ProtobufCMessage base;
-	int32_t a;
-	char *b;
-	St__T *child;
+  ProtobufCMessage base;
+  int32_t a;
+  char *b;
+  St__T *child;
+  int32_t c;
+  protobuf_c_boolean d;
+  size_t n_dict;
+  St__DictEntry **dict;
+  ProtobufCBinaryData array_of_bytes;
 };
 #define ST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&st__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, NULL }
+    , 0, (char *)protobuf_c_empty_string, NULL, 0, 0, 0,NULL, {0,NULL} }
 
 
 /* St__T methods */
 void   st__t__init
-(St__T         *message);
+                     (St__T         *message);
+/* St__DictEntry methods */
+void   st__dict_entry__init
+                     (St__DictEntry         *message);
 /* St methods */
 void   st__init
-(St         *message);
+                     (St         *message);
 size_t st__get_packed_size
-(const St   *message);
+                     (const St   *message);
 size_t st__pack
-(const St   *message,
-	uint8_t             *out);
+                     (const St   *message,
+                      uint8_t             *out);
 size_t st__pack_to_buffer
-(const St   *message,
-	ProtobufCBuffer     *buffer);
+                     (const St   *message,
+                      ProtobufCBuffer     *buffer);
 St *
-st__unpack
-(ProtobufCAllocator  *allocator,
-	size_t               len,
-	const uint8_t       *data);
+       st__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
 void   st__free_unpacked
-(St *message,
-	ProtobufCAllocator *allocator);
+                     (St *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
-typedef void(*St__T_Closure)
-(const St__T *message,
-	void *closure_data);
-typedef void(*St_Closure)
-(const St *message,
-	void *closure_data);
+typedef void (*St__T_Closure)
+                 (const St__T *message,
+                  void *closure_data);
+typedef void (*St__DictEntry_Closure)
+                 (const St__DictEntry *message,
+                  void *closure_data);
+typedef void (*St_Closure)
+                 (const St *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -85,6 +109,7 @@ typedef void(*St_Closure)
 
 extern const ProtobufCMessageDescriptor st__descriptor;
 extern const ProtobufCMessageDescriptor st__t__descriptor;
+extern const ProtobufCMessageDescriptor st__dict_entry__descriptor;
 
 PROTOBUF_C__END_DECLS
 

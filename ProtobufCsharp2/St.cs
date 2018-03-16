@@ -24,13 +24,17 @@ namespace test {
     static StReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CghzdC5wcm90byJLCgJzdBIJCgFhGAEgASgFEgkKAWIYAiABKAkSFAoFY2hp",
-            "bGQYAyABKAsyBS5zdC50GhkKAXQSCQoBeBgBIAEoBRIJCgF5GAIgASgFQgeq",
-            "AgR0ZXN0YgZwcm90bzM="));
+            "CghzdC5wcm90byLOAQoCc3QSCQoBYRgBIAEoBRIJCgFiGAIgASgJEhQKBWNo",
+            "aWxkGAMgASgLMgUuc3QudBIJCgFjGAQgASgFEgkKAWQYBSABKAgSGwoEZGlj",
+            "dBgGIAMoCzINLnN0LkRpY3RFbnRyeRIWCg5hcnJheV9vZl9ieXRlcxgHIAEo",
+            "DBokCgF0EgkKAXgYASABKAUSCQoBeRgCIAEoBRIJCgF6GAMgASgFGisKCURp",
+            "Y3RFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAU6AjgBQgeqAgR0",
+            "ZXN0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::test.st), global::test.st.Parser, new[]{ "A", "B", "Child" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::test.st.Types.t), global::test.st.Types.t.Parser, new[]{ "X", "Y" }, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::test.st), global::test.st.Parser, new[]{ "A", "B", "Child", "C", "D", "Dict", "ArrayOfBytes" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::test.st.Types.t), global::test.st.Types.t.Parser, new[]{ "X", "Y", "Z" }, null, null, null),
+            null, })
           }));
     }
     #endregion
@@ -65,6 +69,10 @@ namespace test {
       a_ = other.a_;
       b_ = other.b_;
       Child = other.child_ != null ? other.Child.Clone() : null;
+      c_ = other.c_;
+      d_ = other.d_;
+      dict_ = other.dict_.Clone();
+      arrayOfBytes_ = other.arrayOfBytes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -106,6 +114,49 @@ namespace test {
       }
     }
 
+    /// <summary>Field number for the "c" field.</summary>
+    public const int CFieldNumber = 4;
+    private int c_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int C {
+      get { return c_; }
+      set {
+        c_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "d" field.</summary>
+    public const int DFieldNumber = 5;
+    private bool d_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool D {
+      get { return d_; }
+      set {
+        d_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dict" field.</summary>
+    public const int DictFieldNumber = 6;
+    private static readonly pbc::MapField<string, int>.Codec _map_dict_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForInt32(16), 50);
+    private readonly pbc::MapField<string, int> dict_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, int> Dict {
+      get { return dict_; }
+    }
+
+    /// <summary>Field number for the "array_of_bytes" field.</summary>
+    public const int ArrayOfBytesFieldNumber = 7;
+    private pb::ByteString arrayOfBytes_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString ArrayOfBytes {
+      get { return arrayOfBytes_; }
+      set {
+        arrayOfBytes_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as st);
@@ -122,6 +173,10 @@ namespace test {
       if (A != other.A) return false;
       if (B != other.B) return false;
       if (!object.Equals(Child, other.Child)) return false;
+      if (C != other.C) return false;
+      if (D != other.D) return false;
+      if (!Dict.Equals(other.Dict)) return false;
+      if (ArrayOfBytes != other.ArrayOfBytes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,6 +186,10 @@ namespace test {
       if (A != 0) hash ^= A.GetHashCode();
       if (B.Length != 0) hash ^= B.GetHashCode();
       if (child_ != null) hash ^= Child.GetHashCode();
+      if (C != 0) hash ^= C.GetHashCode();
+      if (D != false) hash ^= D.GetHashCode();
+      hash ^= Dict.GetHashCode();
+      if (ArrayOfBytes.Length != 0) hash ^= ArrayOfBytes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -156,6 +215,19 @@ namespace test {
         output.WriteRawTag(26);
         output.WriteMessage(Child);
       }
+      if (C != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(C);
+      }
+      if (D != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(D);
+      }
+      dict_.WriteTo(output, _map_dict_codec);
+      if (ArrayOfBytes.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteBytes(ArrayOfBytes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -172,6 +244,16 @@ namespace test {
       }
       if (child_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Child);
+      }
+      if (C != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(C);
+      }
+      if (D != false) {
+        size += 1 + 1;
+      }
+      size += dict_.CalculateSize(_map_dict_codec);
+      if (ArrayOfBytes.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ArrayOfBytes);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -195,6 +277,16 @@ namespace test {
           child_ = new global::test.st.Types.t();
         }
         Child.MergeFrom(other.Child);
+      }
+      if (other.C != 0) {
+        C = other.C;
+      }
+      if (other.D != false) {
+        D = other.D;
+      }
+      dict_.Add(other.dict_);
+      if (other.ArrayOfBytes.Length != 0) {
+        ArrayOfBytes = other.ArrayOfBytes;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -220,6 +312,22 @@ namespace test {
               child_ = new global::test.st.Types.t();
             }
             input.ReadMessage(child_);
+            break;
+          }
+          case 32: {
+            C = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            D = input.ReadBool();
+            break;
+          }
+          case 50: {
+            dict_.AddEntriesFrom(input, _map_dict_codec);
+            break;
+          }
+          case 58: {
+            ArrayOfBytes = input.ReadBytes();
             break;
           }
         }
@@ -257,6 +365,7 @@ namespace test {
         public t(t other) : this() {
           x_ = other.x_;
           y_ = other.y_;
+          z_ = other.z_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -287,6 +396,17 @@ namespace test {
           }
         }
 
+        /// <summary>Field number for the "z" field.</summary>
+        public const int ZFieldNumber = 3;
+        private int z_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Z {
+          get { return z_; }
+          set {
+            z_ = value;
+          }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as t);
@@ -302,6 +422,7 @@ namespace test {
           }
           if (X != other.X) return false;
           if (Y != other.Y) return false;
+          if (Z != other.Z) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -310,6 +431,7 @@ namespace test {
           int hash = 1;
           if (X != 0) hash ^= X.GetHashCode();
           if (Y != 0) hash ^= Y.GetHashCode();
+          if (Z != 0) hash ^= Z.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -331,6 +453,10 @@ namespace test {
             output.WriteRawTag(16);
             output.WriteInt32(Y);
           }
+          if (Z != 0) {
+            output.WriteRawTag(24);
+            output.WriteInt32(Z);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -344,6 +470,9 @@ namespace test {
           }
           if (Y != 0) {
             size += 1 + pb::CodedOutputStream.ComputeInt32Size(Y);
+          }
+          if (Z != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Z);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -362,6 +491,9 @@ namespace test {
           if (other.Y != 0) {
             Y = other.Y;
           }
+          if (other.Z != 0) {
+            Z = other.Z;
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -379,6 +511,10 @@ namespace test {
               }
               case 16: {
                 Y = input.ReadInt32();
+                break;
+              }
+              case 24: {
+                Z = input.ReadInt32();
                 break;
               }
             }
