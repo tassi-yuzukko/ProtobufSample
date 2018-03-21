@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Google.Protobuf;
 using Google.Protobuf.Examples.AddressBook; // protoc.exeにより自動生成されたクラスの名前空間
+using Google.Protobuf.WellKnownTypes;
 using static Google.Protobuf.Examples.AddressBook.Person.Types; // C# 6 の書き方で、クラス内クラスを省略形式で記述することができるようになる（protobufとは関係なし）
 
 namespace ProtobufCsharp
@@ -21,33 +22,41 @@ namespace ProtobufCsharp
                     new PhoneNumber { Number = "222-1111", Type = PhoneType.Work } }
             };
 
+            AddressBook addressBook = new AddressBook
+            {
+                People = { person },
+                //FinishedAt = Timestamp.FromDateTime(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)),
+                FinishedAt = new Timestamp() { Seconds = 1999999 }
+            };
+
             // 文字列にシリアライズ
-            var data = Serialize(person);
+            var data = Serialize(addressBook);
 
             // シリアライズした文字列を読み込んでデシリアライズする
-            Person someone = Deserialize<Person>(data);
+            var address = Deserialize<AddressBook>(data);
 
             // 動作確認
-            Console.WriteLine($"Id:{someone.Id}, Name:{someone.Name}, Email:{someone.Email}, " +
-                $"Phones[0](Number:{someone.Phones[0].Number}, Type:{someone.Phones[0].Type}), " +
-                $"Phones[1](Number:{someone.Phones[1].Number}, Type:{someone.Phones[1].Type})");
+            Console.WriteLine($"Id:{address.People[0].Id}, Name:{address.People[0].Name}, Email:{address.People[0].Email}, " +
+                $"Phones[0](Number:{address.People[0].Phones[0].Number}, Type:{address.People[0].Phones[0].Type}), " +
+                $"Phones[1](Number:{address.People[0].Phones[1].Number}, Type:{address.People[0].Phones[1].Type})," +
+                $"Timestamp:{address.FinishedAt}");
 
             Console.ReadKey();
         }
 
-        static string Serialize<T>(T obj) where T : IMessage<T>
+        static byte[] Serialize<T>(T obj) where T : IMessage<T>
         {
             using (var stream = new MemoryStream())
             {
                 obj.WriteTo(stream);
-                return Encoding.UTF8.GetString(stream.ToArray());
+                return stream.ToArray();
             }
         }
 
-        static T Deserialize<T>(string data) where T : IMessage<T>, new()
+        static T Deserialize<T>(byte[] data) where T : IMessage<T>, new()
         {
             var parser = new MessageParser<T>(() => new T());
-            return parser.ParseFrom(new MemoryStream(Encoding.UTF8.GetBytes(data)));
+            return parser.ParseFrom(new MemoryStream(data));
         }
     }
 }

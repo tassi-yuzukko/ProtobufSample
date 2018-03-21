@@ -24,20 +24,22 @@ namespace Google.Protobuf.Examples.AddressBook {
     static AddressbookReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFhZGRyZXNzYm9vay5wcm90bxIIdHV0b3JpYWwi1QEKBlBlcnNvbhIMCgRu",
-            "YW1lGAEgASgJEgoKAmlkGAIgASgFEg0KBWVtYWlsGAMgASgJEiwKBnBob25l",
-            "cxgEIAMoCzIcLnR1dG9yaWFsLlBlcnNvbi5QaG9uZU51bWJlchpHCgtQaG9u",
-            "ZU51bWJlchIOCgZudW1iZXIYASABKAkSKAoEdHlwZRgCIAEoDjIaLnR1dG9y",
-            "aWFsLlBlcnNvbi5QaG9uZVR5cGUiKwoJUGhvbmVUeXBlEgoKBk1PQklMRRAA",
-            "EggKBEhPTUUQARIICgRXT1JLEAIiLwoLQWRkcmVzc0Jvb2sSIAoGcGVvcGxl",
-            "GAEgAygLMhAudHV0b3JpYWwuUGVyc29uQlAKFGNvbS5leGFtcGxlLnR1dG9y",
-            "aWFsQhFBZGRyZXNzQm9va1Byb3Rvc6oCJEdvb2dsZS5Qcm90b2J1Zi5FeGFt",
-            "cGxlcy5BZGRyZXNzQm9va2IGcHJvdG8z"));
+            "ChFhZGRyZXNzYm9vay5wcm90bxIIdHV0b3JpYWwaH2dvb2dsZS9wcm90b2J1",
+            "Zi90aW1lc3RhbXAucHJvdG8i1QEKBlBlcnNvbhIMCgRuYW1lGAEgASgJEgoK",
+            "AmlkGAIgASgFEg0KBWVtYWlsGAMgASgJEiwKBnBob25lcxgEIAMoCzIcLnR1",
+            "dG9yaWFsLlBlcnNvbi5QaG9uZU51bWJlchpHCgtQaG9uZU51bWJlchIOCgZu",
+            "dW1iZXIYASABKAkSKAoEdHlwZRgCIAEoDjIaLnR1dG9yaWFsLlBlcnNvbi5Q",
+            "aG9uZVR5cGUiKwoJUGhvbmVUeXBlEgoKBk1PQklMRRAAEggKBEhPTUUQARII",
+            "CgRXT1JLEAIiXwoLQWRkcmVzc0Jvb2sSIAoGcGVvcGxlGAEgAygLMhAudHV0",
+            "b3JpYWwuUGVyc29uEi4KCmZpbmlzaGVkQXQYAiABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuVGltZXN0YW1wQlAKFGNvbS5leGFtcGxlLnR1dG9yaWFsQhFBZGRy",
+            "ZXNzQm9va1Byb3Rvc6oCJEdvb2dsZS5Qcm90b2J1Zi5FeGFtcGxlcy5BZGRy",
+            "ZXNzQm9va2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person), global::Google.Protobuf.Examples.AddressBook.Person.Parser, new[]{ "Name", "Id", "Email", "Phones" }, null, new[]{ typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber), global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber.Parser, new[]{ "Number", "Type" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.AddressBook), global::Google.Protobuf.Examples.AddressBook.AddressBook.Parser, new[]{ "People" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.AddressBook), global::Google.Protobuf.Examples.AddressBook.AddressBook.Parser, new[]{ "People", "FinishedAt" }, null, null, null)
           }));
     }
     #endregion
@@ -87,6 +89,9 @@ namespace Google.Protobuf.Examples.AddressBook {
     /// <summary>Field number for the "name" field.</summary>
     public const int NameFieldNumber = 1;
     private string name_ = "";
+    /// <summary>
+    ///c:\users\kei\Documents\git\ProtobufSample\ProtobufCsharp\person.dat
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
       get { return name_; }
@@ -454,6 +459,7 @@ namespace Google.Protobuf.Examples.AddressBook {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AddressBook(AddressBook other) : this() {
       people_ = other.people_.Clone();
+      FinishedAt = other.finishedAt_ != null ? other.FinishedAt.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -472,6 +478,17 @@ namespace Google.Protobuf.Examples.AddressBook {
       get { return people_; }
     }
 
+    /// <summary>Field number for the "finishedAt" field.</summary>
+    public const int FinishedAtFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp finishedAt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp FinishedAt {
+      get { return finishedAt_; }
+      set {
+        finishedAt_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as AddressBook);
@@ -486,6 +503,7 @@ namespace Google.Protobuf.Examples.AddressBook {
         return true;
       }
       if(!people_.Equals(other.people_)) return false;
+      if (!object.Equals(FinishedAt, other.FinishedAt)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -493,6 +511,7 @@ namespace Google.Protobuf.Examples.AddressBook {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= people_.GetHashCode();
+      if (finishedAt_ != null) hash ^= FinishedAt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -507,6 +526,10 @@ namespace Google.Protobuf.Examples.AddressBook {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       people_.WriteTo(output, _repeated_people_codec);
+      if (finishedAt_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FinishedAt);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -516,6 +539,9 @@ namespace Google.Protobuf.Examples.AddressBook {
     public int CalculateSize() {
       int size = 0;
       size += people_.CalculateSize(_repeated_people_codec);
+      if (finishedAt_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FinishedAt);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -528,6 +554,12 @@ namespace Google.Protobuf.Examples.AddressBook {
         return;
       }
       people_.Add(other.people_);
+      if (other.finishedAt_ != null) {
+        if (finishedAt_ == null) {
+          finishedAt_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        FinishedAt.MergeFrom(other.FinishedAt);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -541,6 +573,13 @@ namespace Google.Protobuf.Examples.AddressBook {
             break;
           case 10: {
             people_.AddEntriesFrom(input, _repeated_people_codec);
+            break;
+          }
+          case 18: {
+            if (finishedAt_ == null) {
+              finishedAt_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(finishedAt_);
             break;
           }
         }

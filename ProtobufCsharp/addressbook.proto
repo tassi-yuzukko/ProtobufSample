@@ -12,6 +12,8 @@ package tutorial;
 
 // [END declaration]
 
+import "google/protobuf/timestamp.proto";
+
 // [START java_declaration]
 option java_package = "com.example.tutorial";
 option java_outer_classname = "AddressBookProtos";
@@ -23,7 +25,7 @@ option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
 
 // [START messages]
 message Person {
-  string name = 1;c:\users\kei\Documents\git\ProtobufSample\ProtobufCsharp\person.dat
+  string name = 1;//c:\users\kei\Documents\git\ProtobufSample\ProtobufCsharp\person.dat
   int32 id = 2;  // Unique ID number for this person.
   string email = 3;
 
@@ -44,5 +46,6 @@ message Person {
 // Our address book file is just one of these.
 message AddressBook {
   repeated Person people = 1;
+  google.protobuf.Timestamp finishedAt = 2;
 }
 // [END messages]
