@@ -25,12 +25,13 @@ namespace ProtobufCsharp
             AddressBook addressBook = new AddressBook
             {
                 People = { person },
-                //FinishedAt = Timestamp.FromDateTime(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)),
-                FinishedAt = new Timestamp() { Seconds = 1999999 }
+                FinishedAt = Timestamp.FromDateTime(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)),
             };
 
             // 文字列にシリアライズ
             var data = Serialize(addressBook);
+
+            WriteFile(@".\john.dat", data);
 
             // シリアライズした文字列を読み込んでデシリアライズする
             var address = Deserialize<AddressBook>(data);
@@ -57,6 +58,17 @@ namespace ProtobufCsharp
         {
             var parser = new MessageParser<T>(() => new T());
             return parser.ParseFrom(new MemoryStream(data));
+        }
+
+        static void WriteFile(string filename, byte[] data)
+        {
+            using (var fs = new System.IO.FileStream(
+                filename,
+                System.IO.FileMode.Create,
+                System.IO.FileAccess.Write))
+            {
+                fs.Write(data, 0, data.Length);
+            }
         }
     }
 }
