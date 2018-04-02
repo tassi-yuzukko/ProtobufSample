@@ -8,7 +8,7 @@ namespace ProtobufCsharp2
 {
     class Program
     {
-        static readonly string FileName = @"C:\13041\00-repo\git\github\ProtobufSample\ProtobufSample2\serialize_data.dat";
+        static readonly string FileName = @"..\ProtobufSample2\serialize_data.dat";
 
         static void Main(string[] args)
         {
