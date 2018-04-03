@@ -7,11 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProtobufSample", "ProtobufS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtobufCsharp", "ProtobufCsharp\ProtobufCsharp.csproj", "{31416100-155A-4249-A297-F2C47CD74D18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtobufNet", "ProtobufNet\ProtobufNet.csproj", "{D5B67BE4-137D-4483-A6F7-354DC0A24E0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtobufNet", "ProtobufNet\ProtobufNet.csproj", "{D5B67BE4-137D-4483-A6F7-354DC0A24E0F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtobufCsharp2", "ProtobufCsharp2\ProtobufCsharp2.csproj", "{0F33E86D-E832-494D-9B21-C97887EC45FF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProtobufSample2", "ProtobufSample2\ProtobufSample2.vcxproj", "{89AF0770-3CEB-4096-B637-5464E6E1406D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialClassTest", "PartialClassTest\PartialClassTest.csproj", "{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,18 @@ Global
 		{89AF0770-3CEB-4096-B637-5464E6E1406D}.Release|x64.Build.0 = Release|x64
 		{89AF0770-3CEB-4096-B637-5464E6E1406D}.Release|x86.ActiveCfg = Release|Win32
 		{89AF0770-3CEB-4096-B637-5464E6E1406D}.Release|x86.Build.0 = Release|Win32
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|x64.Build.0 = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Debug|x86.Build.0 = Debug|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|x64.ActiveCfg = Release|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|x64.Build.0 = Release|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|x86.ActiveCfg = Release|Any CPU
+		{83F9D2BF-F7AC-4305-BB51-213C3EAAF4B6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
